@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listing Page</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="bannerTxt">
+            <h1>
+                Men's Outwear
+            </h1>
+        </div>
+        <img src="assets/img/banner.jpg">
+    </header>
+
+    <main>
+        <aside class="sidebar">
+        <div class="p-2">
+            <h3>Filters</h3>
+            <hr/>
+            <h5>Categories</h5>
+            <hr/>
+            <div id="category-filter">
+                <!-- Category checkboxes will be inserted here dynamically -->
+            </div>
+            <hr/>
+        </div>
+        </aside>
+
+        <section class="content">
+            <div class="filters">
+            <div class="py-1 w-100 d-flex justify-between">
+                <div class="search-bar">
+                    <input type="text" id="search" placeholder="Search products...">
+                </div>
+                <div class="d-flex">
+                    <div class="mobile-category">
+                        <div class="filter-category">
+                            <div class="custom-select">
+                                <select id="category-filter-mobile">
+                                    <option value="">Sort By Categories</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <select id="price-sort">
+                        <option value="0">Sort by Price</option>
+                        <option value="asc">Low to High</option>
+                        <option value="desc">High to Low</option>
+                    </select>
+                </div>
+            </div>
+            </div>
+
+            <div class="product-section">
+            <section id="product-list" class="product-list">
+
+            </section>
+            </div>
+
+            <div class="btnLoad">
+            <button id="load-more" class="load-more">Load More</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Product Listing Page</p>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
