@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let start = 0;
     const limit = 10;
 
-    // Fetch products from API
     const fetchProducts = async () => {
         try {
             showShimmer(); // Show shimmer effect
@@ -29,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Show shimmer effect
     const showShimmer = () => {
         for (let i = 0; i < limit; i++) {
             const shimmerElement = document.createElement('div');
@@ -41,15 +39,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Hide shimmer effect
     const hideShimmer = () => {
         const shimmerElements = document.querySelectorAll('.product-placeholder');
         shimmerElements.forEach(element => element.remove());
     };
 
-    // Populate category checkboxes
     const populateCategoryCheckboxes = () => {
-        // Create "All" checkbox
         const allLabel = document.createElement('label');
         allLabel.innerHTML = `
             <input type="checkbox" value="all" checked>
@@ -67,11 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
             categoryFilter.appendChild(label);
         });
 
-        // Add event listener for filtering
         categoryFilter.addEventListener('change', filterAndSortProducts);
     };
 
-    // Populate category filter for mobile
     const populateCategoryFilter = () => {
         const allOption = document.createElement('option');
         allOption.value = 'all';
@@ -87,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Display products
     const displayProducts = () => {
         const slicedProducts = displayedProducts.slice(start, start + limit);
         slicedProducts.forEach(product => {
@@ -113,11 +105,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Filter and sort products
     const filterAndSortProducts = () => {
         let filteredProducts = products;
 
-        // Filter by checkbox category
         const selectedCategories = Array.from(categoryFilter.querySelectorAll('input:checked')).map(input => input.value);
 
         if (!selectedCategories.includes('all') && selectedCategories.length > 0) {
@@ -130,7 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
             filteredProducts = filteredProducts.filter(product => product.category === mobileCategory);
         }
 
-        // Sort by price
         const sort = priceSort.value;
         if (sort === 'asc') {
             filteredProducts.sort((a, b) => a.price - b.price);
@@ -138,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
             filteredProducts.sort((a, b) => b.price - a.price);
         }
 
-        // Search by name
         const searchQuery = searchInput.value.toLowerCase();
         if (searchQuery) {
             filteredProducts = filteredProducts.filter(product =>
@@ -152,12 +140,10 @@ document.addEventListener('DOMContentLoaded', () => {
         displayProducts();
     };
 
-    // Event Listeners
     loadMoreButton.addEventListener('click', displayProducts);
     categoryFilterMobile.addEventListener('change', filterAndSortProducts);
     searchInput.addEventListener('input', filterAndSortProducts);
     priceSort.addEventListener('change', filterAndSortProducts);
 
-    // Initial fetch
     fetchProducts();
 });
